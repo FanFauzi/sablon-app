@@ -4,17 +4,17 @@ use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 use League\CommonMark\Node\Query\OrExpr;
 
-Route::get('/homePage', function () {
+// Route::get('/homePage', function () {
+//     return Inertia::render('HomePage');
+// });
+
+Route::redirect('/', '/home-page');
+Route::get('/home-page', function() {
     return Inertia::render('HomePage');
 });
 
-Route::redirect('/', '/dashboard');
-Route::get('/dashboard', function() {
-    return Inertia::render('Dashboard');
-});
-
 Route::get('/custom-design', function () {
-    return Inertia::render('CustomDesign');
+    return Inertia::render('CustomTshirtDesigner');
 })->name('custom-design');
 
 Route::get('/sablon-logo', function () {
