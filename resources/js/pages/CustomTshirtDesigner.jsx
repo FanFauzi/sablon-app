@@ -1,6 +1,6 @@
 import React, { useRef, useState, useEffect } from "react";
 import { fabric } from "fabric";
-import Header from "../components/Header";
+import Header from "../../components/Header";
 import { Head } from "@inertiajs/react";
 
 export default function App() {
@@ -12,8 +12,8 @@ export default function App() {
   const [isLoading, setIsLoading] = useState(true);
 
   const mockupImages = {
-    front: "images/kaos-putih-depan.png",
-    back: "images/kaos-putih-belakang.png",
+    front: "images/kaos-putih-belakang.png",
+    back: "images/kaos-putih-depan.png",
     side: "images/kaos-putih-samping.png",
   };
 

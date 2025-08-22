@@ -82,7 +82,7 @@ export default function HomePage() {
                     dan desain custom sesuai keinginan Anda.
                 </p>
                 <a
-                    href="#produk"
+                    href="./product"
                     className="bg-white text-blue-600 px-6 py-3 rounded-lg shadow hover:bg-gray-100 transition"
                 >
                     Lihat Produk
@@ -119,7 +119,7 @@ export default function HomePage() {
                     {[
                         { name: 'Kaos Sablon Logo', img: './images/sablon-logo.jpg', link: '/sablon-logo' },
                         { name: 'Kaos Custom Desain', img: './images/tshirt-black.png', link: '/custom-design' },
-                        { name: 'Produk Jadi', img: './images/komunitas.jpg', link: '/produk-jadi' },
+                        { name: 'Produk Jadi', img: './images/komunitas.jpg', link: '/product' },
                     ].map((produk, idx) => (
                         <div
                             key={idx}

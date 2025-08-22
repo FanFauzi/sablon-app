@@ -1,7 +1,7 @@
 import React, { useState, useRef } from 'react';
 import { Head } from '@inertiajs/react';
 import html2canvas from 'html2canvas-pro';
-import Header from '../components/Header';
+import Header from '../../components/Header';
 
 export default function SablonLogo() {
     const [logo, setLogo] = useState(null);
@@ -59,11 +59,11 @@ export default function SablonLogo() {
     };
 
     return (
-        <div className="min-h-screen bg-gray-900 text-white p-6">
+        <div className="min-h-screen bg-gray-900 text-white">
             <Head title="Sablon Logo - Sablon App" />
             <Header child="Sablon Logo" />
 
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 px-6">
                 {/* Panel Pengaturan */}
                 <div className="bg-gray-800 p-4 rounded-lg">
                     <h2 className="text-lg font-semibold mb-4">Pengaturan Desain</h2>
