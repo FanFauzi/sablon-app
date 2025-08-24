@@ -17,9 +17,14 @@ Route::get('/custom-design', function () {
     return Inertia::render('CustomTshirtDesigner');
 })->name('custom-design');
 
-Route::get('/sablon-logo', function () {
-    return Inertia::render('SablonLogo');
-})->name('sablon-logo');
+Route::get('/product', function () {
+    return Inertia::render('Product/Index');
+})->name('product.index');
+
+Route::get('/product/{id}', function ($id) {
+    return Inertia::render('Product/Detail', ['id' => $id]);
+})->name('product.detail');
+
 
 require __DIR__ . '/settings.php';
 require __DIR__ . '/auth.php';

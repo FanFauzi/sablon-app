@@ -115,9 +115,8 @@ export default function HomePage() {
             {/* Produk Section */}
             <section id="produk" className="py-16 px-6 bg-gray-100" data-aos="fade-up">
                 <h2 className="text-3xl font-bold text-center mb-12">Produk Populer</h2>
-                <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+                <div className="grid sm:grid-cols-2 md:grid-cols-2 gap-8 max-w-6xl mx-auto">
                     {[
-                        { name: 'Kaos Sablon Logo', img: './images/sablon-logo.jpg', link: '/sablon-logo' },
                         { name: 'Kaos Custom Desain', img: './images/tshirt-black.png', link: '/custom-design' },
                         { name: 'Produk Jadi', img: './images/komunitas.jpg', link: '/product' },
                     ].map((produk, idx) => (
