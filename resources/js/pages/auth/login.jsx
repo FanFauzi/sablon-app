@@ -7,7 +7,6 @@ import { Button } from '@/components/ui/button';
 import { Checkbox } from '@/components/ui/checkbox';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
-import AuthLayout from '@/layouts/auth-layout';
 
 export default function Login({ status, canResetPassword }) {
     const { data, setData, post, processing, errors, reset } = useForm({
@@ -24,75 +23,101 @@ export default function Login({ status, canResetPassword }) {
     };
 
     return (
-        <AuthLayout title="Log in to your account" description="Enter your email and password below to log in">
+        <>
             <Head title="Log in" />
 
-            <form className="flex flex-col gap-6" onSubmit={submit}>
-                <div className="grid gap-6">
-                    <div className="grid gap-2">
-                        <Label htmlFor="email">Email address</Label>
-                        <Input
-                            id="email"
-                            type="email"
-                            required
-                            autoFocus
-                            tabIndex={1}
-                            autoComplete="email"
-                            value={data.email}
-                            onChange={(e) => setData('email', e.target.value)}
-                            placeholder="email@example.com"
-                        />
-                        <InputError message={errors.email} />
-                    </div>
+            {/* Background gradient biar sama kaya landing page */}
+            <div className="min-h-screen flex items-center justify-center bg-gradient-to-r from-blue-500 to-indigo-600">
+                {/* Card login */}
+                <div className="bg-white shadow-xl rounded-2xl w-full max-w-md p-8">
+                    <h1 className="text-3xl font-bold text-center text-gray-800">
+                        Selamat Datang 👋
+                    </h1>
+                    <p className="text-center text-gray-500 mt-2">
+                        Login ke akun Anda untuk melanjutkan
+                    </p>
 
-                    <div className="grid gap-2">
-                        <div className="flex items-center">
-                            <Label htmlFor="password">Password</Label>
-                            {canResetPassword && (
-                                <TextLink href={route('password.request')} className="ml-auto text-sm" tabIndex={5}>
-                                    Forgot password?
-                                </TextLink>
-                            )}
+                    {status && (
+                        <div className="mb-4 text-center text-sm font-medium text-green-600">
+                            {status}
                         </div>
-                        <Input
-                            id="password"
-                            type="password"
-                            required
-                            tabIndex={2}
-                            autoComplete="current-password"
-                            value={data.password}
-                            onChange={(e) => setData('password', e.target.value)}
-                            placeholder="Password"
-                        />
-                        <InputError message={errors.password} />
+                    )}
+
+                    <form className="flex flex-col gap-6 mt-6" onSubmit={submit}>
+                        <div className="grid gap-2">
+                            <Label htmlFor="email">Email</Label>
+                            <Input
+                                id="email"
+                                type="email"
+                                required
+                                autoFocus
+                                tabIndex={1}
+                                autoComplete="email"
+                                value={data.email}
+                                onChange={(e) => setData('email', e.target.value)}
+                                placeholder="email@example.com"
+                                className="block w-full text-gray-700"
+                            />
+                            <InputError message={errors.email} />
+                        </div>
+
+                        <div className="grid gap-2">
+                            <div className="flex items-center">
+                                <Label htmlFor="password">Password</Label>
+                                {canResetPassword && (
+                                    <TextLink
+                                        href={route('password.request')}
+                                        className="ml-auto text-sm text-blue-600 hover:underline"
+                                        tabIndex={5}
+                                    >
+                                        Lupa password?
+                                    </TextLink>
+                                )}
+                            </div>
+                            <Input
+                                id="password"
+                                type="password"
+                                required
+                                tabIndex={2}
+                                autoComplete="current-password"
+                                value={data.password}
+                                onChange={(e) => setData('password', e.target.value)}
+                                placeholder="Password"
+                                className="block w-full text-gray-700"
+                            />
+                            <InputError message={errors.password} />
+                        </div>
+
+                        <div className="flex items-center space-x-3">
+                            <Checkbox
+                                id="remember"
+                                name="remember"
+                                checked={data.remember}
+                                onClick={() => setData('remember', !data.remember)}
+                                tabIndex={3}
+                            />
+                            <Label htmlFor="remember">Ingat saya</Label>
+                        </div>
+
+                        <Button
+                            type="submit"
+                            className="mt-2 w-full bg-blue-600 hover:bg-blue-700 text-white"
+                            tabIndex={4}
+                            disabled={processing}
+                        >
+                            {processing && <LoaderCircle className="h-4 w-4 animate-spin mr-2" />}
+                            Login
+                        </Button>
+                    </form>
+
+                    <div className="mt-6 text-center text-sm text-gray-600">
+                        Belum punya akun?{' '}
+                        <TextLink href={route('register')} className="text-blue-600 hover:underline" tabIndex={5}>
+                            Daftar
+                        </TextLink>
                     </div>
-
-                    <div className="flex items-center space-x-3">
-                        <Checkbox
-                            id="remember"
-                            name="remember"
-                            checked={data.remember}
-                            onClick={() => setData('remember', !data.remember)}
-                            tabIndex={3}
-                        />
-                        <Label htmlFor="remember">Remember me</Label>
-                    </div>
-
-                    <Button type="submit" className="mt-4 w-full" tabIndex={4} disabled={processing}>
-                        {processing && <LoaderCircle className="h-4 w-4 animate-spin" />}
-                        Log in
-                    </Button>
                 </div>
-
-                <div className="text-muted-foreground text-center text-sm">
-                    Don't have an account?{' '}
-                    <TextLink href={route('register')} tabIndex={5}>
-                        Sign up
-                    </TextLink>
-                </div>
-            </form>
-
-            {status && <div className="mb-4 text-center text-sm font-medium text-green-600">{status}</div>}
-        </AuthLayout>
+            </div>
+        </>
     );
 }
